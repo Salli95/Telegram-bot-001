@@ -30,7 +30,7 @@ def handle_message(message):
     # Добавляем ID отправителя в список пользователей
     user_ids.add(message.chat.id)
     bot.send_message(message.chat.id, "Записал твой ID.")
-    bot.send_message(message.chat.id, "Жди поздравлений от Salli95 каждый день в 7.00)")
+    bot.send_message(message.chat.id, "Жди доброе утро от Salli95 каждый день в 7.00)")
     
     print("Received message:", message.text)
 
