@@ -29,7 +29,9 @@ user_ids = set()  # Множество для уникальных ID польз
 def handle_message(message):
     # Добавляем ID отправителя в список пользователей
     user_ids.add(message.chat.id)
-    bot.send_message(message.chat.id, "Записал твой ID, жди поздравлений 010")
+    bot.send_message(message.chat.id, "Записал твой ID.")
+    bot.send_message(message.chat.id, "Жди поздравлений от Salli95 каждый день в 7.00)")
+    
     print("Received message:", message.text)
 
 # Функция для отправки сообщения
@@ -39,7 +41,7 @@ def send_message():
         bot.send_message(user_id, message)
 
 # Планирование отправки сообщений каждый день в 7:00
-schedule.every().day.at("20:46").do(send_message)
+schedule.every().day.at("07:00").do(send_message)
 
 # Запускаем бота в отдельном потоке
 print("Starting bot polling...")
