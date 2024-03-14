@@ -4,7 +4,6 @@ import time
 import threading
 import schedule
 from goodmorning import wishes
-from background import keep_alive 
 
 TOKEN = '6255065745:AAHpLskHG978WYcSJtXhbderZsC2hr7CqHU'
 
@@ -41,9 +40,7 @@ print("Starting bot polling...")
 thread_bot = threading.Thread(target=bot.polling, kwargs={'none_stop': True})
 thread_bot.start()
 
-keep_alive()#запускаем flask-сервер в отдельном потоке. 
-
-# Запускаем планировщик в отдельном потоке
+# # Запускаем планировщик в отдельном потоке
 while True:
     schedule.run_pending()
     time.sleep(1)
