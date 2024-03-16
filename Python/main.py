@@ -4,15 +4,19 @@ import time
 import threading
 import schedule
 from goodmorning import wishes
-
+import os
 
 TOKEN = '6255065745:AAHpLskHG978WYcSJtXhbderZsC2hr7CqHU'
 
 bot = telebot.TeleBot(TOKEN)
 
+# Получаем текущую директорию скрипта
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, "user_ids.txt")
+
 # Функция для сохранения ID пользователей в файл
 def save_user_ids(user_ids):
-    with open("user_ids.txt", "w") as file:
+    with open(file_path, "w") as file:
         for user_id in user_ids:
             file.write(str(user_id) + "\n")
 
@@ -20,7 +24,7 @@ def save_user_ids(user_ids):
 def load_user_ids():
     user_ids = set()
     try:
-        with open("user_ids.txt", "r") as file:
+        with open(file_path, "r") as file:
             for line in file:
                 user_ids.add(int(line.strip()))
     except FileNotFoundError:
